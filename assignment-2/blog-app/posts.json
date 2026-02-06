@@ -1,0 +1,11 @@
+{
+  "nextId": 3,
+  "posts": [
+    {
+      "id": 1,
+      "title": "Updated First Post",
+      "content": "Hello World!",
+      "timestamp": "2026-1-30 12:54 pm"
+    }
+  ]
+}
