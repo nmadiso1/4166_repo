@@ -7,15 +7,21 @@ import {
     deleteCategoriesHandler
 } from '../controllers/categoryController.js';
 
+import {
+    validateCategoryId,
+    validateCreateCategory,
+    validateUpdateCategory
+} from '../middleware/categoryValidators.js';
+
 
 
 const router = express.Router();
 
-router.get('/categories', getAllCategoriesHandler);
-router.get('/categories/:id', getCategoriesByIdHandler);
-router.post('/categories', createCategoriesHandler);
-router.put('/categories/:id', updateCategoriesHandler);
-router.delete('/categories/:id', deleteCategoriesHandler);
+router.get('/', getAllCategoriesHandler);
+router.get('/:id', validateCategoryId, getCategoriesByIdHandler);
+router.post('/', validateCreateCategory, createCategoriesHandler);
+router.put('/:id', validateCategoryId, validateUpdateCategory, updateCategoriesHandler);
+router.delete('/:id', validateCategoryId, deleteCategoriesHandler);
 
 
 export default router;

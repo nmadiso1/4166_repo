@@ -1,8 +1,14 @@
 import { getNextId, categories } from '../db/categories.js';
 
+export function existsByName(name) {
+    return categories.some(
+        (category) => category.name.toLowerCase() === name.toLowerCase()
+    );
+}
+
 export function getAll() {
     return categories;
-    }
+}
 
 
 export function getById(id) {
@@ -24,14 +30,13 @@ export function update(id, updatedData) {
     const category = categories.find(category => category.id === id);
     if (!category) return undefined
 
-    if (updatedData.title) category.title = updatedData.title
-    if (updatedData.content) category.content = updatedData.content;
+    if (updatedData.name) category.name = updatedData.name
     return category;
 }
 
 export function remove(id) {
     const index = categories.findIndex(category => category.id === id);
     if (index === -1) return false;
-    category.splice(index, 1);
+    categories.splice(index, 1);
     return true;
 }

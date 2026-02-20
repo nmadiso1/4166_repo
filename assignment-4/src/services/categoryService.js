@@ -7,6 +7,7 @@ export function getAllCategories() {
 
 export function getCategoriesById(id) {
     const category = getById(id);
+    console.log(category)
     if (category) return category
     else {
         const error = new Error(`Category ${id} not found`);
